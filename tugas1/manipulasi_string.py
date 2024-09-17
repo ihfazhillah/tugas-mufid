@@ -45,8 +45,20 @@ def index_text(text: str):
       1 <= ini indexnya spasi
     c 2
 
-    Hint: Text bisa di loop. Kamu juga bisa dapatkan indexnya pakai fungsi enumerate.
+    Beberapa konsep yang membantu di dasar python:
+    1. string bisa di loop, pakai for
+    2. list dan bagaimana menambah item ke list
+    3. increment variable
+    4. dictionary, bagaimana cara buat dictionary
+
     """
+    characters = []
+    index = 0
+    # TODO: 1. loop text
+    # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
+    # TODO: 3. tambahkan dictionary sementara ke characters list
+    # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
+    # TODO: 5. return characters
     pass
 
 
@@ -73,7 +85,17 @@ def wrap_tag(indexedText, start, end):
     {'char': 'k</b>', 'index': 1},
     {'char': 'u', 'index': 2},
     ]
+
+    Beberapa konsep yang membantu:
+    1. Loop
+    2. Akses value dari dictionary
+    3. mengubah valua dari dictionary
+    4. Manipulasi text
     """
+    # TODO: 1. loop indexedText (ini adalah kembalian dari fungsi index_text)
+    # TODO: 2. check apakah index tiap item sama dengan start. Bila iya, maka bentuk char menjadi <b>{character}. Jadi misal character adalah 'a' maka jadi '<b>a'.
+    # TODO: 3. check apakah index tiap item sama dengan end. Bila iya, maka bentuk char menjadi {character}</b>. Jadi misal character adalah 'b', maka jadi 'b</b>'
+    # TODO: 4. return indexText lagi
     pass
 
 
@@ -84,11 +106,11 @@ def main():
     expected1 = "aku <b>sedang</b> belajar python"
     assert expected1 == "".join([text["char"] for text in final_chars])
 
-    text2 = "aku <i>sedang</i> belajar python"
-    expected2 = "aku <i><b>sedang</b></i> belajar python"
-    indexed_text = index_text(text2)
-    final_chars = wrap_tag(indexed_text, 4, 9)
-    assert expected2 == "".join([text["char"] for text in final_chars])
+    # text2 = "aku <i>sedang</i> belajar python"
+    # expected2 = "aku <i><b>sedang</b></i> belajar python"
+    # indexed_text = index_text(text2)
+    # final_chars = wrap_tag(indexed_text, 4, 9)
+    # assert expected2 == "".join([text["char"] for text in final_chars])
 
 
 if __name__ == "__main__":
