@@ -56,10 +56,19 @@ def index_text(text: str):
     characters = []
     
     index = 0
+
+    # TODO: 6. tambahkan sebuah variable untuk check apakah kamu sedang berada di dalam tag, atau diluar tag. Variable ini isinya True atau False. Akan diubah sesuai kriteria
+    # dibawah nanti. Maksud tag adalah `<a>` atau `</b>` atau semisalnya.
     
    
     # TODO: 1. loop text
     for huruf in text:
+        # TODO: 7. buat if else disini sebagai ganti dari TODO 2 - TODO 4 dengan ketentuan:
+        # 1. bila huruf adalah '<' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi False, index tidak boleh ditambah
+        # 2. bila huruf adalah '>' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi True, index tidak boleh ditambah
+        # 3. bila variable dari TODO 6 masih False, 'index' adalah None, dan index tidak boleh ditambah
+        # 4. selain itu, value dari 'index' adalah index, dan index boleh ditambah lagi
+        
         # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
         huruf_dict = {'char': huruf, 'index': index}
        
