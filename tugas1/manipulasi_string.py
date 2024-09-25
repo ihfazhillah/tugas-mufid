@@ -21,8 +21,6 @@ Contoh:
 Test:
     Jalankan file ini, bila tidak ada error maka test berhasil.
 """
-
-
 def index_text(text: str):
     """
     return list yang berisi dictionary dengan format {'char': '<character text>', 'index': '<index character>'}
@@ -52,16 +50,35 @@ def index_text(text: str):
     4. dictionary, bagaimana cara buat dictionary
 
     """
+    
+
+    
     characters = []
+    
     index = 0
+    
+   
+    
+    for huruf in text:
+        huruf_dict = {'char': huruf, 'index': index}
+       
+    
+        characters.append(huruf_dict)
+        index += 1
+      
+        
+        
+    return characters
+kalimat = "saya sedang belajar pyhton"
+result = index_text(kalimat)
+    
+print(result)  
     # TODO: 1. loop text
     # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
     # TODO: 3. tambahkan dictionary sementara ke characters list
     # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
     # TODO: 5. return characters
-    pass
-
-
+    
 def wrap_tag(indexedText, start, end):
     """
     Berbekal fungsi diatas. Kamu sudah mendapatkan start dan end index.
@@ -96,8 +113,22 @@ def wrap_tag(indexedText, start, end):
     # TODO: 2. check apakah index tiap item sama dengan start. Bila iya, maka bentuk char menjadi <b>{character}. Jadi misal character adalah 'a' maka jadi '<b>a'.
     # TODO: 3. check apakah index tiap item sama dengan end. Bila iya, maka bentuk char menjadi {character}</b>. Jadi misal character adalah 'b', maka jadi 'b</b>'
     # TODO: 4. return indexText lagi
-    pass
+    
 
+    format_text = []
+
+    for item in indexedText:
+        index = item ['index']
+        character = item ['char']
+        
+        
+        if index == start:
+            format_text.append({'char': f'<b>{character}', 'index': index})
+        elif  index == end:
+            format_text.append({'char': f'{character}</b>', 'index': index})
+        else:
+            format_text.append(item)
+    return format_text
 
 def main():
     text1 = "aku sedang belajar python"
@@ -112,6 +143,6 @@ def main():
     # final_chars = wrap_tag(indexed_text, 4, 9)
     # assert expected2 == "".join([text["char"] for text in final_chars])
 
-
+    print(expected1)
 if __name__ == "__main__":
     main()
