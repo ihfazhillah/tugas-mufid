@@ -21,8 +21,6 @@ Contoh:
 Test:
     Jalankan file ini, bila tidak ada error maka test berhasil.
 """
-
-
 def index_text(text: str):
     """
     return list yang berisi dictionary dengan format {'char': '<character text>', 'index': '<index character>'}
@@ -52,16 +50,51 @@ def index_text(text: str):
     4. dictionary, bagaimana cara buat dictionary
 
     """
+    
+
+    
     characters = []
+    
     index = 0
+
+    # TODO: 6. tambahkan sebuah variable untuk check apakah kamu sedang berada di dalam tag, atau diluar tag. Variable ini isinya True atau False. Akan diubah sesuai kriteria
+    # dibawah nanti. Maksud tag adalah `<a>` atau `</b>` atau semisalnya.
+    
+   
     # TODO: 1. loop text
-    # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
-    # TODO: 3. tambahkan dictionary sementara ke characters list
-    # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
-    # TODO: 5. return characters
-    pass
+    for huruf in text:
+        if  huruf == '<':
+           inside_tag = True
+           characters.append({'char': huruf,'index': None})
+        elif huruf == '>':
+           inside_tag = False
+           characters.append({'char': huruf, 'index': None})
+        elif inside_tag:
+            characters.append({'char': huruf, 'index': None})
+        else:
+            characters.append({'char': huruf, 'index': index})   
+        # TODO: 7. buat if else disini sebagai ganti dari TODO 2 - TODO 4 dengan ketentuan:
+        # 1. bila huruf adalah '<' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi False, index tidak boleh ditambah
+        # 2. bila huruf adalah '>' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi True, index tidak boleh ditambah
+        # 3. bila variable dari TODO 6 masih False, 'index' adalah None, dan index tidak boleh ditambah
+        # 4. selain itu, value dari 'index' adalah index, dan index boleh ditambah lagi
+        
+        # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
+       
+       
+        # TODO: 3. tambahkan dictionary sementara ke characters list
+       
+        
+        # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
+        index += 1
+      
+        
+    # TODO: 5. return characters    
+    return characters
 
-
+    
+    
+    
 def wrap_tag(indexedText, start, end):
     """
     Berbekal fungsi diatas. Kamu sudah mendapatkan start dan end index.
@@ -92,12 +125,29 @@ def wrap_tag(indexedText, start, end):
     3. mengubah valua dari dictionary
     4. Manipulasi text
     """
-    # TODO: 1. loop indexedText (ini adalah kembalian dari fungsi index_text)
-    # TODO: 2. check apakah index tiap item sama dengan start. Bila iya, maka bentuk char menjadi <b>{character}. Jadi misal character adalah 'a' maka jadi '<b>a'.
-    # TODO: 3. check apakah index tiap item sama dengan end. Bila iya, maka bentuk char menjadi {character}</b>. Jadi misal character adalah 'b', maka jadi 'b</b>'
-    # TODO: 4. return indexText lagi
-    pass
+    
+    
+    
+    
 
+    format_text = []
+
+    # TODO: 1. loop indexedText (ini adalah kembalian dari fungsi index_text)
+    for item in indexedText:
+        index = item ['index']
+        character = item ['char']
+        
+        # TODO: 2. check apakah index tiap item sama dengan start. Bila iya, maka bentuk char menjadi <b>{character}. Jadi misal character adalah 'a' maka jadi '<b>a'.
+        if index == start:
+            format_text.append({'char': f'<b>{character}', 'index': index})
+        # TODO: 3. check apakah index tiap item sama dengan end. Bila iya, maka bentuk char menjadi {character}</b>. Jadi misal character adalah 'b', maka jadi 'b</b>'
+        elif  index == end:
+            format_text.append({'char': f'{character}</b>', 'index': index})
+        else:
+            format_text.append(item)
+   
+    # TODO: 4. return indexText lagi
+    return format_text
 
 def main():
     text1 = "aku sedang belajar python"
@@ -106,12 +156,14 @@ def main():
     expected1 = "aku <b>sedang</b> belajar python"
     assert expected1 == "".join([text["char"] for text in final_chars])
 
-    # text2 = "aku <i>sedang</i> belajar python"
-    # expected2 = "aku <i><b>sedang</b></i> belajar python"
-    # indexed_text = index_text(text2)
-    # final_chars = wrap_tag(indexed_text, 4, 9)
-    # assert expected2 == "".join([text["char"] for text in final_chars])
+    text2 = "aku <i>sedang</i> belajar python"
+    expected2 = "aku <i><b>sedang</b></i> belajar python"
+    indexed_text = index_text(text2)
+    final_chars = wrap_tag(indexed_text, 4, 9)
+    assert expected2 == "".join([text["char"] for text in final_chars])
 
-
+    print(expected1)
+    print(expected2)
+    
 if __name__ == "__main__":
     main()
