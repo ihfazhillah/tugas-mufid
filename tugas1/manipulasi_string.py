@@ -143,17 +143,29 @@ def main():
     text1 = "aku sedang belajar python"
     indexed_text = index_text(text1)
     final_chars = wrap_tag(indexed_text, 4, 9)
+    final_hasil = "".join(text["char"] for text in final_chars)
     expected1 = "aku <b>sedang</b> belajar python"
-    assert expected1 == "".join([text["char"] for text in final_chars])
+    print("TEST 1")
+    print("HASIL")
+    print(final_hasil)
+    print("Yang diinginkan...")
+    print(expected1)
+    assert expected1 == final_hasil
+    print()
 
     text2 = "aku <i>sedang</i> belajar python"
     expected2 = "aku <i><b>sedang</b></i> belajar python"
     indexed_text = index_text(text2)
     final_chars = wrap_tag(indexed_text, 4, 9)
-    assert expected2 == "".join([text["char"] for text in final_chars])
-
-    print(expected1)
+    final_hasil = "".join(text["char"] for text in final_chars)
+    print()
+    print("TEST 2")
+    print("HASIL")
+    print(final_hasil)
+    print("Yang diinginkan...")
     print(expected2)
+    assert expected2 == final_hasil
+
     
 if __name__ == "__main__":
     main()
