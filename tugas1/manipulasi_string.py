@@ -63,6 +63,17 @@ def index_text(text: str):
    
     # TODO: 1. loop text
     for huruf in text:
+        if  huruf == '<':
+           inside_tag = True
+           characters.append({'char': huruf,'index': None})
+        elif huruf == '>':
+           inside_tag = False
+           characters.append({'char': huruf, 'index': None})
+        elif inside_tag:
+            characters.append({'char': huruf, 'index': None})
+        else:
+            characters.append({'char': huruf, 'index': index})   
+
         # TODO: 7. buat if else disini sebagai ganti dari TODO 2 - TODO 4 dengan ketentuan:
         # 1. bila huruf adalah '<' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi False, index tidak boleh ditambah
         # 2. bila huruf adalah '>' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi True, index tidak boleh ditambah
@@ -70,10 +81,11 @@ def index_text(text: str):
         # 4. selain itu, value dari 'index' adalah index, dan index boleh ditambah lagi
         
         # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
-        huruf_dict = {'char': huruf, 'index': index}
+       
        
         # TODO: 3. tambahkan dictionary sementara ke characters list
-        characters.append(huruf_dict)
+       
+
         
         # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
         index += 1
