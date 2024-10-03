@@ -54,9 +54,10 @@ def index_text(text: str):
 
     
     characters = []
-    
+   
     index = 0
-
+    inside_tag = False
+     
     # TODO: 6. tambahkan sebuah variable untuk check apakah kamu sedang berada di dalam tag, atau diluar tag. Variable ini isinya True atau False. Akan diubah sesuai kriteria
     # dibawah nanti. Maksud tag adalah `<a>` atau `</b>` atau semisalnya.
     
@@ -155,15 +156,14 @@ def main():
     final_chars = wrap_tag(indexed_text, 4, 9)
     expected1 = "aku <b>sedang</b> belajar python"
     assert expected1 == "".join([text["char"] for text in final_chars])
-
+    print("".join([text["char"] for text in final_chars]))
+"""
     text2 = "aku <i>sedang</i> belajar python"
     expected2 = "aku <i><b>sedang</b></i> belajar python"
     indexed_text = index_text(text2)
     final_chars = wrap_tag(indexed_text, 4, 9)
     assert expected2 == "".join([text["char"] for text in final_chars])
-
-    print(expected1)
-    print(expected2)
+"""
     
 if __name__ == "__main__":
     main()
