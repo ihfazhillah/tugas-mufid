@@ -73,6 +73,7 @@ def index_text(text: str):
             characters.append({'char': huruf, 'index': None})
         else:
             characters.append({'char': huruf, 'index': index})   
+
         # TODO: 7. buat if else disini sebagai ganti dari TODO 2 - TODO 4 dengan ketentuan:
         # 1. bila huruf adalah '<' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi False, index tidak boleh ditambah
         # 2. bila huruf adalah '>' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi True, index tidak boleh ditambah
@@ -84,6 +85,7 @@ def index_text(text: str):
        
         # TODO: 3. tambahkan dictionary sementara ke characters list
        
+
         
         # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
         index += 1
