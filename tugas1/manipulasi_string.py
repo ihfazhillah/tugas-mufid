@@ -155,8 +155,10 @@ def main():
     indexed_text = index_text(text1)
     final_chars = wrap_tag(indexed_text, 4, 9)
     expected1 = "aku <b>sedang</b> belajar python"
+    
+    print("".join([text["char"] for text in final_chars])) # Output
+    
     assert expected1 == "".join([text["char"] for text in final_chars])
-    print("".join([text["char"] for text in final_chars]))
 """
     text2 = "aku <i>sedang</i> belajar python"
     expected2 = "aku <i><b>sedang</b></i> belajar python"
