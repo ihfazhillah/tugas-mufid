@@ -148,7 +148,7 @@ def wrap_tag(indexedText, start, end):
         else:
             format_text.append(item)
    
-    # TODO: 4. return indexText lagi
+    
     return format_text
 
 def main():
