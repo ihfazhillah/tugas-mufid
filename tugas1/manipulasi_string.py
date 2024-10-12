@@ -54,26 +54,27 @@ def index_text(text: str):
 
     
     characters = []
-   
     index = 0
     inside_tag = False
-     
+    
+
     # TODO: 6. tambahkan sebuah variable untuk check apakah kamu sedang berada di dalam tag, atau diluar tag. Variable ini isinya True atau False. Akan diubah sesuai kriteria
     # dibawah nanti. Maksud tag adalah `<a>` atau `</b>` atau semisalnya.
     
    
     # TODO: 1. loop text
     for huruf in text:
-        if  huruf == '<':
-           inside_tag = True
-           characters.append({'char': huruf,'index': None})
+        if huruf == '<':
+            inside_tag = True
+            characters.append({'char': huruf, 'index': None})
         elif huruf == '>':
-           inside_tag = False
-           characters.append({'char': huruf, 'index': None})
+            inside_tag = False
+            characters.append({'char': huruf, 'index': None})
         elif inside_tag:
             characters.append({'char': huruf, 'index': None})
         else:
-            characters.append({'char': huruf, 'index': index})   
+            characters.append({'char': huruf, 'index': index})
+            index += 1
         # TODO: 7. buat if else disini sebagai ganti dari TODO 2 - TODO 4 dengan ketentuan:
         # 1. bila huruf adalah '<' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi False, index tidak boleh ditambah
         # 2. bila huruf adalah '>' maka value dari 'index' adalah None dan variable dari TODO 6 menjadi True, index tidak boleh ditambah
@@ -81,13 +82,13 @@ def index_text(text: str):
         # 4. selain itu, value dari 'index' adalah index, dan index boleh ditambah lagi
         
         # TODO: 2. setiap character buat dictionary sementara dengan format: {'char': character, 'index': index}
-       
+        
        
         # TODO: 3. tambahkan dictionary sementara ke characters list
-       
+        
         
         # TODO: 4. naikkan 1 variable index. Maksudnya, kalau sekarang 0, maka nanti jadi 1 tiap kali tambah character
-        index += 1
+    
       
         
     # TODO: 5. return characters    
@@ -154,18 +155,29 @@ def main():
     text1 = "aku sedang belajar python"
     indexed_text = index_text(text1)
     final_chars = wrap_tag(indexed_text, 4, 9)
+    final_hasil = "".join(text["char"] for text in final_chars)
     expected1 = "aku <b>sedang</b> belajar python"
-    
-    print("".join([text["char"] for text in final_chars])) # Output
-    
-    assert expected1 == "".join([text["char"] for text in final_chars])
-"""
+    print("TEST 1")
+    print("HASIL")
+    print(final_hasil)
+    print("Yang diinginkan...")
+    print(expected1)
+    assert expected1 == final_hasil
+    print()
+
     text2 = "aku <i>sedang</i> belajar python"
     expected2 = "aku <i><b>sedang</b></i> belajar python"
     indexed_text = index_text(text2)
     final_chars = wrap_tag(indexed_text, 4, 9)
-    assert expected2 == "".join([text["char"] for text in final_chars])
-"""
+    final_hasil = "".join(text["char"] for text in final_chars)
+    print()
+    print("TEST 2")
+    print("HASIL")
+    print(final_hasil)
+    print("Yang diinginkan...")
+    print(expected2)
+    assert expected2 == final_hasil
+
     
 if __name__ == "__main__":
     main()
