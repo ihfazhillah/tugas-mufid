@@ -12,6 +12,7 @@ def parse(text: str):
     for char_info in indexed_text:
         char = char_info['char']
         index = char_info['index']  
+        
 
         if char == '<': 
             inside_tag = True
