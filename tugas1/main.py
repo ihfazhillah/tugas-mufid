@@ -1,13 +1,13 @@
-from manipulasi_string import index_text
+from manipulasi_string import index_text # mengimport fungsi dari index_text dari file manipulasi
 
 def parse(text: str):
     indexed_text = index_text(text)
-    final_text = []
-    highlights = []
+    final_text = [] # untuk menyimpan text yg sdh dibersihkan dari tag HML
+    highlights = [] # utk menyimpan rentang text yg ditandai sebagai bold
     start = None
-    real_index = 0  
-    inside_tag = False
-    tag_type = None  
+    real_index = 0  # utk menjaga posisi karakter dalam teks bersih
+    inside_tag = False # utk mengetauhi ketika berada di dalam tag html
+    tag_type = None  # menyimpan jenis tag yg ditemukan
 
     for char_info in indexed_text:
         char = char_info['char']
@@ -29,9 +29,9 @@ def parse(text: str):
         else:
             
             final_text.append(char)
-            real_index += 1
+            real_index += 1 #utk melacak posisi karakteer dalam text bersih
 
-    clean_text = ''.join(final_text)
+    clean_text = ''.join(final_text) # utk menggabungkan list (final_text) menjadi string text bersih
     result = {
         "text": clean_text,
         "highlights": highlights
