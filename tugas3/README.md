@@ -44,6 +44,7 @@ hasil list final harus berbentuk file json dengan nama `final_messages.json`
 ## Note:
 
 - Pelajari tentang buka file, load json data, save json data ke file
+- Pelajari juga tentang `eval`. itu fungsi dari python.
 - pelajari format chats.json dan messages.json 
 - bagaimana menggabungkan 2 file tersebut untuk bisa mengubah menjadi format yang diinginkan
 - dasar dasar yang penting untuk diulang ulang:
